@@ -1,0 +1,25 @@
+surf2fits: a command line program to convert scanning probe microscopy
+surf files to astronomical FITS format.
+
+The code to read surf format is a heavily modified version of surffile.c
+from the Qwyddion Project (http://gwyddion.net/), to whom grateful
+acknowledgment is made.
+
+Build with the usual GNU instructions, but with a mandatory --with-cfitsio
+switch to specify the location of the cfitsio library, e.g.:
+
+  ./configure --prefix=/soft/saord --with-cfitsio=/proj/rd/linux64
+  make
+  make install
+  make clean
+
+Run with two mandatory args:
+
+  surf2fits input_surf_file output_fits_file
+
+The output file obeys cfitsio conventions, e.g. "stdout" will write
+the FITS file to standard output:
+
+  surf2fits foo.sur stdout | gzip -c > foo.fits.gz
+
+surf2fits is distributed under the GNU General Public License.
